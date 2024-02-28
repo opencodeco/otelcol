@@ -1,0 +1,31 @@
+receivers:
+  jaeger:
+    protocols:
+      thrift_http:
+        endpoint: 0.0.0.0:14268
+  statsd:
+    endpoint: 0.0.0.0:8125
+    is_monotonic_counter: true
+
+exporters:
+  otlp:
+    endpoint: 0.0.0.0:4317
+  otlphttp:
+    endpoint: http://0.0.0.0:4318
+
+processors:
+  batch:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 4000
+
+service:
+  pipelines:
+    traces:
+      receivers: [ jaeger ]
+      processors: [ memory_limiter, batch ]
+      exporters: [ otlp, otlphttp ]
+    metrics:
+      receivers: [ statsd ]
+      processors: [ memory_limiter, batch ]
+      exporters: [ otlp, otlphttp ]
