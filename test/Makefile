@@ -4,4 +4,4 @@ build:
 
 .PHONY: test
 test:
-	docker run --rm --net host otelcol-test
+	docker run --rm -p 9501:9501 otelcol-test
