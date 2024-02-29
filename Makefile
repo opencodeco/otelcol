@@ -11,3 +11,8 @@ test:
 .PHONY: push
 push:
 	docker push opencodeco/otelcol:$(VERSION)
+
+opencodeco-otelcol:
+	docker create --name opencodeco-otelcol opencodeco/otelcol:$(VERSION)
+	docker cp opencodeco-otelcol:/otelcol opencodeco-otelcol
+	docker rm opencodeco-otelcol

@@ -8,6 +8,8 @@ receivers:
     is_monotonic_counter: true
 
 exporters:
+  debug:
+    verbosity: detailed
   otlp:
     endpoint: 0.0.0.0:4317
     tls:
@@ -28,8 +30,8 @@ service:
     traces:
       receivers: [ jaeger ]
       processors: [ memory_limiter, batch ]
-      exporters: [ otlp, otlphttp ]
+      exporters: [ debug, otlp, otlphttp ]
     metrics:
       receivers: [ statsd ]
       processors: [ memory_limiter, batch ]
-      exporters: [ otlp, otlphttp ]
+      exporters: [ debug, otlp, otlphttp ]
