@@ -4,4 +4,4 @@ build:
 
 .PHONY: test
 test:
-	docker run --rm -p 9501:9501 otelcol-test
+	docker run --rm --add-host host.docker.internal:host-gateway -p 9501:9501 otelcol-test
