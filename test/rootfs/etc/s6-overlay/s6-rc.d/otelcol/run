@@ -1,2 +1,0 @@
-#!/bin/ash
-/usr/bin/otelcol --config /etc/otelcol/config.yaml
