@@ -1,2 +1,0 @@
-#!/bin/ash
-/usr/bin/php /usr/local/src/bin/hyperf.php start
