@@ -1,5 +1,4 @@
 FROM otelcol-test-base
-WORKDIR /app
 COPY composer.* .
 RUN composer install --prefer-dist --no-dev
 COPY . .

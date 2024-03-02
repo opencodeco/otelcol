@@ -5,3 +5,4 @@ RUN apk add --update --no-cache s6-overlay \
  && echo "longrun" > /etc/s6-overlay/s6-rc.d/otelcol/type \
  && echo -e "#!/usr/bin/with-contenv ash\n/usr/bin/otelcol --config /etc/otelcol/config.yaml" > /etc/s6-overlay/s6-rc.d/otelcol/run \
  && touch /etc/s6-overlay/s6-rc.d/user/contents.d/otelcol
+WORKDIR /app
